@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe 'user sees an edit page' do
-  describe 'they link from the show page' do
-    describe 'they fill in and edit field and submit' do
-      it 'edits an article' do
+describe 'user edits an article' do
+  describe 'they link from a show page' do
+    describe 'they fill in an edit field and submit' do
+      it 'displays the updated information' do
         article = Article.create!(title: "Hitchhiker's Guide to the Galaxy", body: "An adventure in space!")
 
         visit articles_path
