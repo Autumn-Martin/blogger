@@ -10,7 +10,7 @@ describe 'user edits an article' do
         click_link article.title
         click_link "Edit"
 
-        expect(current_path).to eq(edit_article_path)
+        expect(current_path).to eq(edit_article_path(article))
 
         fill_in "article[title]", with: "Year Zero: A Novel"
 
