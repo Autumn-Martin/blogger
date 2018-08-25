@@ -30,6 +30,11 @@ class ArticlesController < ApplicationController
     # @article = Article.find(params[:id]) #replaced by before_action set_article
   end
 
+  def update
+    @article.update(article_params)
+
+    redirect_to article_path(@article)
+  end
   private
 
     def article_params
