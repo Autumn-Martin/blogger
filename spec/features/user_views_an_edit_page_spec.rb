@@ -17,7 +17,7 @@ describe 'user edits an article' do
 
         expect(page).to have_content( "Year Zero: A Novel")
         expect(page).to_not have_content("Hitchiker's Guide to the Galaxy")
-        expect(page).to have_content("Article #{article.title} was updated!")
+        expect(page).to have_content("Article Year Zero: A Novel was updated!")
       end
     end
   end
