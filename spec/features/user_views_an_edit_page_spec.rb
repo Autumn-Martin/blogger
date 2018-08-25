@@ -10,13 +10,12 @@ describe 'user edits an article' do
         click_link article.title
         click_link "Edit"
 
-        expect(current_path).to eq(edit_article_path)
+        expect(current_path).to eq(edit_article_path(article))
 
         fill_in "article[title]", with: "Year Zero: A Novel"
+        click_on "Update Article"
 
-        click_on "Submit"
-
-        expect(page).to have_content("Year Zero: A Novel")
+        expect(page).to have_content( "Year Zero: A Novel")
         expect(page).to_not have_content("Hitchiker's Guide to the Galaxy")
       end
     end

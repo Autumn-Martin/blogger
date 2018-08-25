@@ -1,11 +1,11 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :destroy, :edit]
+  before_action :set_article, only: [:destroy, :edit, :show, :update]
   def index
     @articles = Article.all
   end
 
   def show
-    # @article = Article.find(params[:id])
+    # @article = Article.find(params[:id]) #replaced by before_action set_article
   end
 
   def new
@@ -20,15 +20,21 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    # Article.destroy(params[:id]) #replaced by before_action set_article
     @article.destroy
 
     redirect_to articles_path
   end
 
   def edit
-
+    # @article = Article.find(params[:id]) #replaced by before_action set_article
   end
 
+  def update
+    @article.update(article_params)
+
+    redirect_to article_path(@article)
+  end
   private
 
     def article_params
@@ -38,5 +44,4 @@ class ArticlesController < ApplicationController
     def set_article
       @article = Article.find(params[:id])
     end
-
 end
