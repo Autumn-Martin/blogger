@@ -17,4 +17,20 @@ describe "user sees one article" do
       expect(page).to have_content(comment_2.body)
     end
   end
+  describe 'they fill in a comment form' do
+    it 'displays the comment on the article show' do
+      article = Article.create!(title: 'Hitchhikers Guide to the Galaxy', body: 'an adventure in space')
+
+      visit article_path(article)
+
+      fill_in 'comment[author_name]', with: 'Dolphin'
+      fill_in 'comment[body]', with: 'So long and thanks for all the fish!'
+      click_on 'Submit'
+
+      expect(current_path).to eq(article_path(article))
+      expect(page).to have_content('Post a Comment')
+      expect(page).to have_content('Dolphin')
+      expect(page).to have_content('So long and thanks for all the fish!')
+    end
+  end 
 end
