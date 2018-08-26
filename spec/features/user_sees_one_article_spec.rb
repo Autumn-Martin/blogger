@@ -15,6 +15,7 @@ describe "user sees one article" do
       expect(page).to have_content(comment_1.body)
       expect(page).to have_content(comment_2.author_name)
       expect(page).to have_content(comment_2.body)
+      expect(page).to have_content("Comments (#{article.comments.size})")
     end
   end
   describe 'they fill in a comment form' do
@@ -32,5 +33,5 @@ describe "user sees one article" do
       expect(page).to have_content('Dolphin')
       expect(page).to have_content('So long and thanks for all the fish!')
     end
-  end 
+  end
 end
